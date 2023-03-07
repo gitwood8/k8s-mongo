@@ -31,4 +31,22 @@ spec:
               name: mongodb-secret 
               key: mongo-root-password
         - name: ME_CONFIG_MONGODB_SERVER
-          value: #from configmap
+          valueFrom: #from configmap
+            configMapKeyRef:
+              name: mongodb-configmap #name from fonfigmap
+              key: database_url #key (url) from fonfigmap
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-express-service
+spec:
+  selector:
+    app: mongo-express
+  type: LoadBalancer  
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+      nodePort: 30000 #port that will be open on external ip. 
+#Range between 30000-32767

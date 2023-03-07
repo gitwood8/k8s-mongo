@@ -1,5 +1,5 @@
-apiVersion: vq1
-kind: configmap
+apiVersion: v1
+kind: ConfigMap
 metadata:
   name: mongodb-configmap
 data:
