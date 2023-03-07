@@ -1,0 +1,6 @@
+apiVersion: vq1
+kind: configmap
+metadata:
+  name: mongodb-configmap
+data:
+  database_url: mongodb-service #name of the service of mongodb
