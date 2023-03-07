@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongobd-deployment
+  labels:
+    app: mongobd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongobd
+  template:
+    metadata:
+      labels:
+        app: mongobd
+    spec:
+      containers:
+      - name: mongobd
+        image: mongo
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value:
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value:
